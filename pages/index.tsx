@@ -43,7 +43,7 @@ const Home = ({ pokemons }: { pokemons: PokemonIndex[] }) => {
   );
 };
 
-export const getServerSideProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch(
     "https://raw.githubusercontent.com/jherr/pokemon/main/index.json"
   );
