@@ -2,9 +2,9 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { Pokedex, usePokemon } from "../../components/fetch";
+import { Pokedex, PokemonIndex, usePokemon } from "../../components/fetch";
 import styles from "../../styles/details.module.css";
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, GetStaticProps, GetStaticPaths } from "next";
 
 const Details = ({ pokemon }: { pokemon: Pokedex }) => {
   // const {
@@ -65,7 +65,20 @@ const Details = ({ pokemon }: { pokemon: Pokedex }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const res = await fetch(
+    "https://raw.githubusercontent.com/jherr/pokemon/main/index.json"
+  );
+  const data: PokemonIndex[] = await res.json();
+
+  const paths = data.map((pokemon) => ({
+    params: { id: pokemon.id.toString() },
+  }));
+
+  return { paths, fallback: false };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const id = params?.id;
   const res = await fetch(
     `https://raw.githubusercontent.com/jherr/pokemon/main/pokemon/${id}.json`

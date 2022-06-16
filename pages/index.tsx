@@ -1,8 +1,4 @@
-import type {
-  NextPage,
-  GetServerSideProps,
-  InferGetServerSidePropsType,
-} from "next";
+import type { GetServerSideProps, GetStaticProps } from "next";
 import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
@@ -47,7 +43,7 @@ const Home = ({ pokemons }: { pokemons: PokemonIndex[] }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetStaticProps = async () => {
   const res = await fetch(
     "https://raw.githubusercontent.com/jherr/pokemon/main/index.json"
   );
