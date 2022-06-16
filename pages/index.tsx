@@ -20,6 +20,7 @@ const Home: NextPage = () => {
       {isLoading && <p>Loading...</p>}
 
       <div className={styles.grid}>
+        <h1>Pokemon List</h1>
         {pokemons
           ? pokemons.slice(0, 10).map((pokemon) => (
               <div className={styles.card} key={pokemon.id}>
