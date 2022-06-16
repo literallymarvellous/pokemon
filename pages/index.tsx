@@ -23,16 +23,16 @@ const Home: NextPage = () => {
 
       <div className={styles.grid}>
         {pokemons
-          ? pokemons.slice(0, 10).map((pokemon) => (
+          ? pokemons.map((pokemon) => (
               <div className={styles.card} key={pokemon.id}>
                 <Link href={`/pokemon/${pokemon.id}`}>
-                  <a>
+                  <a className="img">
                     <Image
                       src={`https://raw.githubusercontent.com/jherr/pokemon/main/${pokemon.image}`}
                       layout="responsive"
                       alt={pokemon.name}
-                      width={300}
-                      height={200}
+                      width={400}
+                      height={300}
                     />
                     <p className={styles.name}>{pokemon.name}</p>
                   </a>

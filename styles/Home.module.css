@@ -16,3 +16,7 @@
   font-size: 2rem;
   font-weight: bold;
 }
+
+.img {
+  display: block;
+}
