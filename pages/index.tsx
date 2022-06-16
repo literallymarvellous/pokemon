@@ -19,7 +19,7 @@ const Home: NextPage = () => {
 
       {isLoading && <p>Loading...</p>}
 
-      <h1>Pokemon List</h1>
+      <h1 className="heading">Pokemon List</h1>
 
       <div className={styles.grid}>
         {pokemons
@@ -33,7 +33,6 @@ const Home: NextPage = () => {
                       alt={pokemon.name}
                       width={300}
                       height={200}
-                      priority
                     />
                     <p className={styles.name}>{pokemon.name}</p>
                   </a>
