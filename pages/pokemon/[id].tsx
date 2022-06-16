@@ -66,7 +66,7 @@ const Details = ({ pokemon }: { pokemon: Pokedex }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const { id } = params;
+  const id = params?.id;
   const res = await fetch(
     `https://raw.githubusercontent.com/jherr/pokemon/main/pokemon/${id}.json`
   );
